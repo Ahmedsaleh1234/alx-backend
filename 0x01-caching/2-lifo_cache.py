@@ -12,9 +12,10 @@ class LIFOCache(BaseCaching):
         self.keys = list()
 
     def put(self, key, item):
-        ''' Add key/value pair to cache data.
-            If cache is at max capacity (specified by BaseCaching.MAX_ITEMS),
-            discard newest entry in cache to accommodate new entry. '''
+        """
+        assign to the dictionary self.cache_data
+        the item value for the key key
+        """
         if key is not None and item is not None:
             self.cache_data[key] = item
             if key not in self.keys:
@@ -23,8 +24,8 @@ class LIFOCache(BaseCaching):
                 self.keys.append(self.keys.pop(self.keys.index(key)))
             if len(self.keys) > BaseCaching.MAX_ITEMS:
                 discard = self.keys.pop(-2)
-                del self.cache_data[discard]
-                print('DISCARD: {:s}'.format(discard))
+                self.cache_data.pop(discard)
+                print(f'DISCARD: {discard}')
 
     def get(self, key):
         """ Return value stored in `key` key of cache.
