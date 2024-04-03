@@ -28,9 +28,9 @@ class LIFOCache(BaseCaching):
                 print(f'DISCARD:{discard}')
 
     def get(self, key):
+        """ Return value stored in `key` key of cache.
+            If key is None or does not exist in cache, return None.
         """
-        return the value in self.cache_data linked to key.
-        """
-        if key is None or self.cache_data.get(key) is None:
-            return None
-        return self.cache_data.get(key)
+        if key is not None and key in self.cache_data:
+            return self.cache_data[key]
+        return None
