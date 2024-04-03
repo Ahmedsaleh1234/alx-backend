@@ -9,6 +9,10 @@ class FIFOCache(BaseCaching):
     FIFOCache that inherits from BaseCaching and is a caching system:
     """
 
+    def __init__(self):
+        super().__init__()
+        self.keys = list()
+
     def put(self, key, item):
         """
         assign to the dictionary self.cache_data the
@@ -16,10 +20,13 @@ class FIFOCache(BaseCaching):
         """
         if key is None and item is None:
             return
-        if (len(self.cache_data) > BaseCaching.MAX_ITEMS):
-            frist_item = next(iter(self.cache_data))
-            self.cache_data.pop(frist_item)
         self.cache_data[key] = item
+        if key not in self.keys:
+            self.keys.append(key)
+        if (len(self.keys) > BaseCaching.MAX_ITEMS):
+            discard = self.keys.pop(0)
+            self.cache_data.pop(discard)
+            print(f'DISCARD: {discard}')
 
     def get(self, key):
         """ return the value in self.cache_data linked to key"""
