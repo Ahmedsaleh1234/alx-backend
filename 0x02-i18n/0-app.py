@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def index():
+def index() -> str:
     """route and an index.html template"""
     return render_template('index.html')
 
