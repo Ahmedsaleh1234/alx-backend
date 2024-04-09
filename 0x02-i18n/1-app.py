@@ -6,7 +6,7 @@ from flask_babel import Babel
 
 
 class Config():
-    """ set Babel’s default l"""
+    """ set Babels default l"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCAL = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -18,7 +18,7 @@ babel = Babel(app)
 
 
 @app.route('/')
-def index():
+def index() -> str:
     """configure available languages in our app"""
     return render_template('1-index.html')
 
