@@ -16,7 +16,6 @@ function displaySchoolValue(schoolName) {
         console.log(replay);
     })
 }
-
 displaySchoolValue('Holberton');
 setNewSchool('HolbertonSanFrancisco', '100');
 displaySchoolValue('HolbertonSanFrancisco');
